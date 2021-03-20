@@ -4,6 +4,10 @@ import whatsapp from "./router/whatsapp.router";
 import usuario from "./router/usuario.routes";
 import temperatura from "./router/usuario_temperatura.routes" 
 import frecuencia from "./router/usuario_frecuencia.routes" 
+import velocidad from "./router/usuario_velocidad.routes" 
+import vuelta from "./router/usuario_vueltas.routes" 
+import tiempo from "./router/usuario_tiempo.routes" 
+import distancia from "./router/usuario_distancia.routes" 
 import oxigeno from "./router/usuario_oxigeno.routes" 
 import coach from "./router/coach.routes" 
 
@@ -46,6 +50,10 @@ server.app.use(api, temperatura);
 server.app.use(api, frecuencia);
 server.app.use(api, oxigeno);
 server.app.use(api, coach);
+server.app.use(api, velocidad);
+server.app.use(api, tiempo);
+server.app.use(api, distancia);
+server.app.use(api, vuelta);
 
 server.startSocket(()=> {
   console.log("Servidor corriendo en el puerto 3000 :D")

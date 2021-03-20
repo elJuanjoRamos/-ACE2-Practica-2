@@ -38,7 +38,20 @@ export default class SocketServer {
             client.on('refreshFrecuencia', (data:any, callback:any)=> {
                 client.broadcast.emit('refreshFrecuencia', data)
             });
+            client.on('refreshVelocidad', (data:any, callback:any)=> {
+                client.broadcast.emit('refreshVelocidad', data)
+            });
+            client.on('refreshTiempo', (data:any, callback:any)=> {
+                client.broadcast.emit('refreshTiempo', data)
+            });
+            client.on('refreshDistancia', (data:any, callback:any)=> {
+                client.broadcast.emit('refreshDistancia', data)
+            });
+            client.on('refreshVuelta', (data:any, callback:any)=> {
+                client.broadcast.emit('refreshVuelta', data)
+            });
 
+            //
         })
     }
 
@@ -75,5 +88,40 @@ export default class SocketServer {
             frecuencias: data
         });
     }
-
+    public sendVelocidad(id_usuario: any, data: any) {
+        console.log(data);
+        this.io.emit('refreshVelocidad', {
+            satus: 200,
+            ok: true,
+            idUsuario: id_usuario,
+            velocidad: data
+        });
+    }
+    public sendTiempo(id_usuario: any, data: any) {
+        console.log(data);
+        this.io.emit('refreshTiempo', {
+            satus: 200,
+            ok: true,
+            idUsuario: id_usuario,
+            tiempo: data
+        });
+    }
+    public sendDistancia(id_usuario: any, data: any) {
+        console.log(data);
+        this.io.emit('refreshDistancia', {
+            satus: 200,
+            ok: true,
+            idUsuario: id_usuario,
+            distancia: data
+        });
+    }
+    public sendVuelta(id_usuario: any, data: any) {
+        console.log(data);
+        this.io.emit('refreshVuelta', {
+            satus: 200,
+            ok: true,
+            idUsuario: id_usuario,
+            vuelta: data
+        });
+    }
 }
